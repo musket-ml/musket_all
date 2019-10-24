@@ -26,4 +26,5 @@ class TestStringMethods(unittest.TestCase):
         tasks=exp.fit()
         executor = parralel.get_executor(1, 1)
         executor.execute(tasks)
+        raise ValueError("A")
         pass
