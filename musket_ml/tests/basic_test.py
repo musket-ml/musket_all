@@ -29,7 +29,7 @@ class TestStringMethods(unittest.TestCase):
         executor = parralel.get_executor(1, 1)
         executor.execute(tasks)
         r=exp.result(False,True)
-        self.assertGreater(r, 0, "Result should be greater then zero")
+        self.assertGreaterEqual(r, 0, "Result should be greater then zero")
         self.assertTrue(isinstance(r,float),"result should be float")
         pass
     
@@ -41,6 +41,6 @@ class TestStringMethods(unittest.TestCase):
         executor = parralel.get_executor(1, 1)
         executor.execute(tasks)
         r=exp.result(False,True)
-        self.assertGreater(r, 0, "Result should be greater then zero")
+        self.assertGreaterEqual(r, 0, "Result should be greater then zero")
         self.assertTrue(isinstance(r,float),"result should be float")
         pass
