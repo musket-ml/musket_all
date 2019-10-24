@@ -1,6 +1,10 @@
-from musket_core import datasets,genericcsv,coders
+from musket_core import datasets,genericcsv,coders,image_datasets
 
 @datasets.dataset_provider(origin="train.csv",kind="GenericDataSet")
 def getTitanic():
     return genericcsv.GenericCSVDataSet("train.csv",["Sex","Fare","Age","Pclass"],["Survived"],[],
                                         {"Sex":"binary","Fare":"normalized_number","Age":"normalized_number","Pclass":"one_hot","Survived":"binary"},input_groups={"0":["Sex","Fare","Age","Pclass"]})
+    
+@datasets.dataset_provider(origin="saltExists.csv",kind="BinaryClassificationDataSet")
+def getSe():
+    return image_datasets.BinaryClassificationDataSet(["images"],"saltExists.csv","ImageId","Class")    

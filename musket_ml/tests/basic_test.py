@@ -23,9 +23,11 @@ class TestStringMethods(unittest.TestCase):
     def test_project_creation1(self):
         
         pr=projects.Project(os.path.join(fl,"../examples"))
-        exp=pr.byName("t1")
+        exp=pr.byName("t2")
         tasks=exp.fit()
         executor = parralel.get_executor(1, 1)
         executor.execute(tasks)
-        raise ValueError("A")
+        r=exp.result(False,True)
+        self.assertGreater(r, 0, "Result should be greater then zero")
+        self.assertTrue(isinstance(r,float),"result should be float")
         pass
