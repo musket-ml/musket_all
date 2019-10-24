@@ -7,4 +7,9 @@ def getTitanic():
     
 @datasets.dataset_provider(origin="saltExists.csv",kind="BinaryClassificationDataSet")
 def getSe():
-    return image_datasets.BinaryClassificationDataSet(["images"],"saltExists.csv","ImageId","Class")    
+    return image_datasets.BinaryClassificationDataSet(["images"],"saltExists.csv","ImageId","Class")
+
+
+@datasets.dataset_provider(origin="train.csv",kind="BinarySegmentationDataSet")
+def getSaltTrain():
+    return image_datasets.BinarySegmentationDataSet(["images","images"],"salt.csv","id","rle_mask")    

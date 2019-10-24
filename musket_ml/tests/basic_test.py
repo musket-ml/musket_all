@@ -8,7 +8,7 @@ fl=__file__
 fl=os.path.dirname(fl)
 class TestStringMethods(unittest.TestCase):
 
-    def test_project_creation(self):
+    def test_basic_network(self):
         
         pr=projects.Project(os.path.join(fl,"../examples"))
         exp=pr.byName("t1")
@@ -21,10 +21,22 @@ class TestStringMethods(unittest.TestCase):
         print(r)
         pass
     
-    def test_project_creation1(self):
+    def test_image_classifier(self):
         
         pr=projects.Project(os.path.join(fl,"../examples"))
         exp=pr.byName("t2")
+        tasks=exp.fit()
+        executor = parralel.get_executor(1, 1)
+        executor.execute(tasks)
+        r=exp.result(False,True)
+        self.assertGreater(r, 0, "Result should be greater then zero")
+        self.assertTrue(isinstance(r,float),"result should be float")
+        pass
+    
+    def test_image_segmentation(self):
+        
+        pr=projects.Project(os.path.join(fl,"../examples"))
+        exp=pr.byName("t3")
         tasks=exp.fit()
         executor = parralel.get_executor(1, 1)
         executor.execute(tasks)
