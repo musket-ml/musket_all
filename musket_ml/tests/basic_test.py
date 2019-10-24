@@ -16,3 +16,11 @@ class TestStringMethods(unittest.TestCase):
         executor.execute(tasks)
         pass
     
+    def test_project_creation1(self):
+        
+        pr=projects.Project(os.path.join(fl,"../examples"))
+        exp=pr.byName("t1")
+        tasks=exp.fit()
+        executor = parralel.get_executor(1, 1)
+        executor.execute(tasks)
+        pass
