@@ -14,6 +14,9 @@ class TestStringMethods(unittest.TestCase):
         tasks=exp.fit()
         executor = parralel.get_executor(1, 1)
         executor.execute(tasks)
+        r=exp.result()
+        self.assertGreater(r, 0, "Result should be greater then zero")
+        print(r)
         pass
     
     def test_project_creation1(self):
