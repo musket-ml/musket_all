@@ -3,6 +3,7 @@ from musket_core import projects
 from musket_core import parralel
 import os
 
+
 fl=__file__
 fl=os.path.dirname(fl)
 class TestStringMethods(unittest.TestCase):
