@@ -16,6 +16,7 @@ class TestStringMethods(unittest.TestCase):
         executor.execute(tasks)
         r=exp.result()
         self.assertGreater(r, 0, "Result should be greater then zero")
+        self.assertTrue(isinstance(r,float),"result should be float")
         print(r)
         pass
     
