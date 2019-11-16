@@ -6,3 +6,4 @@ Wrapper package for all musket modules
 ```
 pip install musket_ml
 ```
+Or more detailed instructions [here](https://musket-ml.github.io/webdocs/generic/#installation).
