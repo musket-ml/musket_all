@@ -1,0 +1,49 @@
+#%Musket Generic 1.0
+imports: [musket_text.preprocessors]
+declarations: 
+   declarations: 
+   bert2:      
+      shared: true
+      body:       
+       - bert:           
+       - takeFirstToken:             
+   net:
+       - euclidean-dist:    
+           - bert2:
+           - bert2:        
+       - dense: [1,sigmoid]      
+   pr-block:
+     - lowercase:  
+     - text_to_bert_input: ["/multilingual_L-12_H-768_A-12",30]
+folds_count: 1
+testSplit: 0.2 
+preprocessing: 
+  - transform-preprocessor: 
+      - pr-block: 
+      - pr-block:
+  #- disk-cache:
+architecture: net 
+optimizer: adam  
+batch: 2
+stages:
+  - epochs: 1
+loss: binary_crossentropy      
+stratified: false 
+primary_metric: val_binary_accuracy 
+primary_metric_mode: max
+callbacks:
+  LRVariator: #Bert fine tuning requires custom LR schedule to perform well   
+     fromVal: 0  
+     toVal: 0.00005 
+     style: linear     
+     relSize: 0.2
+     then: 
+         LRVariator: 
+             fromVal: 0.00005
+             toVal: 0 
+             relSize: 4                
+             style: linear    
+
+metrics: [binary_accuracy, log_loss]    
+dataset: 
+    get_train_siamic: []
