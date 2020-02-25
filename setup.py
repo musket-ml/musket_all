@@ -18,5 +18,5 @@ setup(name='musket_ml',
       license='MIT',
       packages=setuptools.find_packages(),
       include_package_data=True,
-      install_requires=["musket_text>=0.443","musket_core>=0.498","classification_pipeline>=0.432","segmentation_pipeline>=0.432"],
+      install_requires=["nltk>=3.4,<=3.4.5","musket_text>=0.443","musket_core>=0.498","classification_pipeline>=0.432","segmentation_pipeline>=0.432"],
       zip_safe=False)
